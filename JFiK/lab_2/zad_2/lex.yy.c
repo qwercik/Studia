@@ -370,8 +370,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 		YY_FATAL_ERROR( "token too large, exceeds YYLMAX" ); \
 	yy_flex_strncpy( yytext, (yytext_ptr), yyleng + 1 ); \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 2
-#define YY_END_OF_BUFFER 3
+#define YY_NUM_RULES 9
+#define YY_END_OF_BUFFER 10
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -379,9 +379,10 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static const flex_int16_t yy_accept[6] =
+static const flex_int16_t yy_accept[19] =
     {   0,
-        0,    0,    3,    1,    0
+        0,    0,    0,    0,    0,    0,    0,    0,   10,    8,
+        7,    1,    2,    3,    4,    6,    5,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
@@ -389,7 +390,7 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    2,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    3,    4,    5,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -416,35 +417,41 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static const YY_CHAR yy_meta[3] =
+static const YY_CHAR yy_meta[6] =
     {   0,
-        1,    1
+        1,    1,    1,    1,    1
     } ;
 
-static const flex_int16_t yy_base[6] =
+static const flex_int16_t yy_base[19] =
     {   0,
-        0,    0,    3,    4,    4
+        0,    0,    5,    0,   10,    0,   13,    0,   17,   19,
+       19,   19,   19,   19,   19,   19,   19,   19
     } ;
 
-static const flex_int16_t yy_def[6] =
+static const flex_int16_t yy_def[19] =
     {   0,
-        5,    1,    5,    5,    0
+       18,    1,   18,    3,   18,    5,    5,    7,   18,   18,
+       18,   18,   18,   18,   18,   18,   18,    0
     } ;
 
-static const flex_int16_t yy_nxt[7] =
+static const flex_int16_t yy_nxt[25] =
     {   0,
-        4,    4,    5,    3,    5,    5
+       10,   11,   12,   13,   10,   10,   11,   10,   14,   15,
+       10,   11,   16,   10,   17,   10,   18,   10,    9,   18,
+       18,   18,   18,   18
     } ;
 
-static const flex_int16_t yy_chk[7] =
+static const flex_int16_t yy_chk[25] =
     {   0,
-        1,    1,    3,    5,    5,    5
+        1,    1,    1,    1,    1,    3,    3,    3,    3,    3,
+        5,    5,    5,    5,    5,    7,    9,    7,   18,   18,
+       18,   18,   18,   18
     } ;
 
 /* Table of booleans, true if rule could match eol. */
-static const flex_int32_t yy_rule_can_match_eol[3] =
+static const flex_int32_t yy_rule_can_match_eol[10] =
     {   0,
-1, 0,     };
+0, 0, 0, 0, 0, 0, 1, 0, 0,     };
 
 static yy_state_type yy_last_accepting_state;
 static char *yy_last_accepting_cpos;
@@ -467,13 +474,22 @@ char yytext[YYLMAX];
 char *yytext_ptr;
 #line 1 "scan.l"
 #line 2 "scan.l"
+  // Nie działa to jeszcze najlepiej
   #include <stdio.h>
   int yywrap(void);
   int yylex(void);
-#line 474 "lex.yy.c"
-#line 475 "lex.yy.c"
+
+  int hashes, dollars, percents;
+  int max;
+  int err;
+#line 486 "lex.yy.c"
+ 
+#line 488 "lex.yy.c"
 
 #define INITIAL 0
+#define S1 1
+#define S2 2
+#define S3 3
 
 #ifndef YY_NO_UNISTD_H
 /* Special case for "unistd.h", since it is non-ANSI. We include it way
@@ -688,11 +704,9 @@ YY_DECL
 		}
 
 	{
-#line 6 "scan.l"
+#line 14 "scan.l"
 
-#line 8 "scan.l"
- /* == rules == */
-#line 696 "lex.yy.c"
+#line 710 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -719,13 +733,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 6 )
+				if ( yy_current_state >= 19 )
 					yy_c = yy_meta[yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 4 );
+		while ( yy_base[yy_current_state] != 19 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -760,20 +774,82 @@ do_action:	/* This label is used only to access EOF actions. */
 			goto yy_find_action;
 
 case 1:
-/* rule 1 can match eol */
 YY_RULE_SETUP
-#line 9 "scan.l"
-{  printf("Unexpected character in input file\n");
-            return -1;
-          }
+#line 15 "scan.l"
+hashes++;
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 12 "scan.l"
+#line 16 "scan.l"
+{ dollars++; BEGIN S1; }
+	YY_BREAK
+case 3:
+YY_RULE_SETUP
+#line 17 "scan.l"
+dollars++;
+	YY_BREAK
+case 4:
+YY_RULE_SETUP
+#line 18 "scan.l"
+{ percents++; BEGIN S2; }
+	YY_BREAK
+case 5:
+YY_RULE_SETUP
+#line 19 "scan.l"
+percents++;
+	YY_BREAK
+case 6:
+YY_RULE_SETUP
+#line 20 "scan.l"
+{
+    if (hashes != dollars || dollars != percents || hashes < max) {
+        err = 1;
+    }
+
+    max = hashes;
+    hashes = dollars = percents = 0;
+    hashes++;
+    BEGIN INITIAL;
+}
+	YY_BREAK
+case 7:
+/* rule 7 can match eol */
+YY_RULE_SETUP
+#line 31 "scan.l"
+{
+    if (hashes != dollars || dollars != percents || hashes < max) {
+        err = 1;
+    }
+
+    if (err) {
+        puts("Error !!!");
+    } else {
+        puts("OK");
+    }
+
+    err = 0;
+    hashes = dollars = percents = 0;
+    max = 0;
+    BEGIN INITIAL;
+}
+	YY_BREAK
+case 8:
+YY_RULE_SETUP
+#line 48 "scan.l"
+{
+    err = 1;
+}
+	YY_BREAK
+case 9:
+YY_RULE_SETUP
+#line 51 "scan.l"
 ECHO;
 	YY_BREAK
-#line 776 "lex.yy.c"
+#line 849 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
+case YY_STATE_EOF(S1):
+case YY_STATE_EOF(S2):
+case YY_STATE_EOF(S3):
 	yyterminate();
 
 	case YY_END_OF_BUFFER:
@@ -1069,7 +1145,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 6 )
+			if ( yy_current_state >= 19 )
 				yy_c = yy_meta[yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
@@ -1097,11 +1173,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 6 )
+		if ( yy_current_state >= 19 )
 			yy_c = yy_meta[yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
-	yy_is_jam = (yy_current_state == 5);
+	yy_is_jam = (yy_current_state == 18);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1789,7 +1865,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 12 "scan.l"
+#line 51 "scan.l"
 
 int yywrap(void) { return 1; }
 int main(void) { return yylex(); }
