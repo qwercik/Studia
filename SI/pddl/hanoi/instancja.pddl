@@ -24,6 +24,11 @@
 	    
 	    (pusty y)
 	    (pusty z)
+	    
+	    (nad k1 k2)
+	    (nad k2 k3)
+	    (nad k3 k4)
+	    (nad k4 k5)
 	)
 	(:goal
 		(and

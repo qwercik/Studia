@@ -7,6 +7,7 @@
 	    (szczyt ?co)
 	    (dno ?co)
 	    (pusty ?gdzie)
+	    (nad ?co ?naczymlezy)
 	)
 	
     ; Gotowa
@@ -18,6 +19,7 @@
 	        (not (dno ?co))
 	        (pusty ?gdzie)
 	        ; (mniejszy ?co ?naczymlezalo) ; redundancja?
+	        (nad ?co ?naczymlezalo)
 	    )
 	    :effect (and
 	        (not (na ?co ?skad))
@@ -25,6 +27,7 @@
 	        (not (pusty ?gdzie))
 	        (dno ?co)
 	        (szczyt ?naczymlezalo)
+	        (not (nad ?co ?naczymlezalo))
 	    )
 	)
 	
@@ -63,6 +66,7 @@
 	        (pusty ?skad)
 	        (not (szczyt ?naco))
 	        (not (dno ?co))
+	        (nad ?co ?naco)
 	    )
 	)
 	
@@ -76,6 +80,7 @@
 	        (szczyt ?naco)
 	        (not (dno ?co))
 	        (mniejszy ?co ?naco)
+	        (nad ?co ?naczymlezalo)
 	        ; (mniejszy ?co ?naczymlezalo) ;?
 	    )
 	    :effect (and
@@ -83,6 +88,8 @@
 	        (na ?co ?gdzie)
 	        (szczyt ?naczymlezalo)
 	        (not (szczyt ?naco))
+	        (not (nad ?co ?naczymlezalo))
+	        (nad ?co ?naco)
 	    )
 	)
 )
