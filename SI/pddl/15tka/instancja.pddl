@@ -1,0 +1,43 @@
+(define
+    (problem p1)
+    (:domain merry)
+    (:objects k1 k2 k3 k4 k5 k6 k7 k8 k9 p1 p2 p3 p4 p5 p6 p7 p8 p9)
+    (:init
+        (poziomo p1 p2)
+        (poziomo p2 p3)
+        (poziomo p4 p5)
+        (poziomo p5 p6)
+        (poziomo p7 p8)
+        (poziomo p8 p9)
+        
+        (pionowo p1 p4)
+        (pionowo p4 p7)
+        (pionowo p2 p5)
+        (pionowo p5 p8)
+        (pionowo p3 p6)
+        (pionowo p6 p9)
+        
+        (na k5 p1)
+        (na k4 p2)
+        (na k1 p3)
+        (na k8 p4)
+        (na k9 p5)
+        (na k3 p6)
+        (na k7 p7)
+        (na k2 p8)
+        (na k6 p9)
+        
+        (falszywy k9)
+    )
+    (:goal (and
+        (na k1 p1)
+        (na k2 p2)
+        (na k3 p3)
+        (na k4 p4)
+        (na k5 p5)
+        (na k6 p6)
+        (na k7 p7)
+        (na k8 p8)
+    ))
+)
+
